@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenWeather Project</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="weather-container">
+        <form action="/" method="get">
+            <input type="text" name="location" placeholder="Enter location" required>
+            <button type="submit">Get Weather</button>
+        </form>
+
+        <% if (location) { %>
+            <h1>Current Weather in <%= location %></h1>
+            <% if (currentImage) { %>
+                <img src="<%= currentImage %>" alt="Weather Image" class="weather-image">
+            <% } %>
+            <p>Temperature: <%= currentTemp %>°C</p>
+            <p>Condition: <%= currentCondition %> <%= currentEmoji %></p>
+
+            <h1>Tomorrow's Weather</h1>
+            <% if (tomorrowImage) { %>
+                <img src="<%= tomorrowImage %>" alt="Weather Image" class="weather-image">
+            <% } %>
+            <p>Temperature: <%= tomorrowTemp %>°C</p>
+            <p>Condition: <%= tomorrowCondition %> <%= tomorrowEmoji %></p>
+        <% } else { %>
+            <h1>Please enter a location to get the weather</h1>
+        <% } %>
+    </div>
+</body>
+</html>
